@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Wrapper = styled.div`
   background: #ee4d64;
@@ -7,6 +7,15 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const fade = keyframes`
+  from{
+    opacity:0;
+    transform:scale(1.1);
+  }to{
+    opacity:1;
+    transform:scale(1);
+  }
+`;
 export const Content = styled.div`
   width: 100%;
   max-width: 315px;
@@ -14,6 +23,11 @@ export const Content = styled.div`
   background: #fff;
   border-radius: 4px;
   padding: 40px 20px;
+  animation: ${fade} 300ms linear;
+
+  img {
+    max-width: 50%;
+  }
 
   h1 {
     color: #ee4d64;
