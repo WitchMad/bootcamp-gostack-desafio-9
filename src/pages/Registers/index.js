@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Container, Cabecalho, List } from '../../css/container';
 
-export default function Dashboard() {
+export default function Registers() {
   return (
     <Container>
       <Cabecalho>
-        <h2>Gerenciando Alunos</h2>
+        <h2>Gerenciando matrículas</h2>
         <div>
           <button type="button">+ CADASTRAR</button>
           <input type="text" placeholder="Buscar Aluno" />
@@ -16,9 +16,11 @@ export default function Dashboard() {
         <table>
           <thead>
             <tr>
-              <th>NOME</th>
-              <th>E-MAIL</th>
-              <th>IDADE</th>
+              <th>ALUNO</th>
+              <th>PLANO</th>
+              <th>INÍCIO</th>
+              <th>TÉRMINO</th>
+              <th>ATIVA</th>
               <th />
               <th />
             </tr>
@@ -26,22 +28,10 @@ export default function Dashboard() {
           <tbody>
             <tr>
               <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
-              <td>editar</td>
-              <td>apagar</td>
-            </tr>
-            <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
-              <td>editar</td>
-              <td>apagar</td>
-            </tr>
-            <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
+              <td>Start</td>
+              <td>30 de Abril de 2019</td>
+              <td>30 de Maio de 2019</td>
+              <td>v</td>
               <td>editar</td>
               <td>apagar</td>
             </tr>

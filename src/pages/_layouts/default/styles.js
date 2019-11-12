@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  background: #f34242;
+  background: #eee;
+  height: 100%;
 `;
-export const Content = styled.div``;
+export const Content = styled.div`
+  padding: 34px 20px;
+`;

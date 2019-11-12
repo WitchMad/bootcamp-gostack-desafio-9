@@ -2,46 +2,45 @@ import React from 'react';
 
 import { Container, Cabecalho, List } from '../../css/container';
 
-export default function Dashboard() {
+export default function Plans() {
   return (
     <Container>
       <Cabecalho>
-        <h2>Gerenciando Alunos</h2>
+        <h2>Gerenciando planos</h2>
         <div>
           <button type="button">+ CADASTRAR</button>
-          <input type="text" placeholder="Buscar Aluno" />
         </div>
       </Cabecalho>
       <List>
         <table>
           <thead>
             <tr>
-              <th>NOME</th>
-              <th>E-MAIL</th>
-              <th>IDADE</th>
+              <th>TÍTULO</th>
+              <th>DURAÇÃO</th>
+              <th>VALOR p/ MÊS</th>
               <th />
               <th />
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
+              <td>Start</td>
+              <td>1 mês</td>
+              <td>R$ 129,00</td>
               <td>editar</td>
               <td>apagar</td>
             </tr>
             <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
+              <td>Start</td>
+              <td>1 mês</td>
+              <td>R$ 129,00</td>
               <td>editar</td>
               <td>apagar</td>
             </tr>
             <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
+              <td>Start</td>
+              <td>1 mês</td>
+              <td>R$ 129,00</td>
               <td>editar</td>
               <td>apagar</td>
             </tr>
