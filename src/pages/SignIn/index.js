@@ -1,7 +1,6 @@
 import React from 'react';
 
 import logo from '../../assets/logo.png';
-// import { Container } from './styles';
 
 export default function SignIn() {
   return (
@@ -13,7 +12,7 @@ export default function SignIn() {
         <input type="email" id="email" placeholder="email@example.com" />
       </label>
       <label htmlFor="password">
-        SEU SENHA
+        SUA SENHA
         <input type="password" id="password" placeholder="**********" />
       </label>
       <button type="button">Entrar no sistema</button>

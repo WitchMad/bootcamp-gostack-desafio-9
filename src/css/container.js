@@ -35,8 +35,43 @@ export const Cabecalho = styled.div`
 
 export const List = styled.div`
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 4px;
+
+  div.container {
+    color: #444;
+    display: flex;
+  }
+
+  div.container h2 {
+    flex: 0.275;
+  }
+
+  div.list_item {
+    color: #666;
+    display: flex;
+    font-size: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  div.list_item p {
+    flex: 1;
+  }
+
+  div.list_item button {
+    flex: 0.3;
+    background: none;
+    border: 0;
+  }
+
+  button.edit {
+    color: #4d85ee;
+  }
+
+  button.delete {
+    color: #de3b3b;
+  }
 
   table {
     overflow: auto;

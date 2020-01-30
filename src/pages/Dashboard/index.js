@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, Cabecalho, List } from '../../css/container';
 
+import api from '../../services/api';
+
 export default function Dashboard() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function loadUsers() {
+      try {
+        const response = await api.get('/students');
+        setUsers(response.data);
+      } catch (err) {
+        alert(err.message); // eslint-disable-line
+      }
+    }
+    loadUsers();
+  }, []);
+
   return (
     <Container>
       <Cabecalho>
@@ -13,40 +29,25 @@ export default function Dashboard() {
         </div>
       </Cabecalho>
       <List>
-        <table>
-          <thead>
-            <tr>
-              <th>NOME</th>
-              <th>E-MAIL</th>
-              <th>IDADE</th>
-              <th />
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
-              <td>editar</td>
-              <td>apagar</td>
-            </tr>
-            <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
-              <td>editar</td>
-              <td>apagar</td>
-            </tr>
-            <tr>
-              <td>Fulano de tal</td>
-              <td>exemplo@email.com</td>
-              <td>45</td>
-              <td>editar</td>
-              <td>apagar</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="container">
+          <h2>NOME</h2>
+          <h2>E-MAIL</h2>
+          <h2>IDADE</h2>
+        </div>
+        {users.length !== 0 &&
+          users.map(user => (
+            <div className="list_item">
+              <p>{user.name}</p>
+              <p>{user.email}</p>
+              <p>{user.age}</p>
+              <button type="button" className="edit">
+                editar
+              </button>
+              <button type="button" className="delete">
+                apagar
+              </button>
+            </div>
+          ))}
       </List>
     </Container>
   );
