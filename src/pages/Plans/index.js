@@ -42,7 +42,7 @@ export default function Plans() {
         </div>
         {plans.length !== 0 &&
           plans.map(plan => (
-            <div className="list_item">
+            <div className="list_item" key={plan.id}>
               <p>{plan.title}</p>
               <p>
                 {plan.duration} {plan.duration > 1 ? 'Meses' : 'Mês'}

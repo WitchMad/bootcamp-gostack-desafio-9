@@ -46,7 +46,7 @@ export default function Registers() {
         </div>
         {registers.length !== 0 &&
           registers.map(register => (
-            <div className="list_item">
+            <div className="list_item" key={register.id}>
               <p>{register.student.name}</p>
               <p>{register.plan.title}</p>
               <p>{register.start_date_formated}</p>

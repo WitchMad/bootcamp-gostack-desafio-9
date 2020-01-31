@@ -36,7 +36,7 @@ export default function Dashboard() {
         </div>
         {users.length !== 0 &&
           users.map(user => (
-            <div className="list_item">
+            <div className="list_item" key={user.id}>
               <p>{user.name}</p>
               <p>{user.email}</p>
               <p>{user.age}</p>

@@ -30,7 +30,7 @@ export default function Help() {
         </div>
         {helps.length !== 0 &&
           helps.map(help => (
-            <div className="list_item">
+            <div className="list_item" key={help.id}>
               <p>{help.student.name}</p>
               <button type="button" className="default">
                 responder
