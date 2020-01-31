@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 85%;
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
 `;
 
@@ -45,6 +46,7 @@ export const List = styled.div`
 
   div.container h2 {
     flex: 0.275;
+    font-size: 16px;
   }
 
   div.list_item {
@@ -53,6 +55,7 @@ export const List = styled.div`
     font-size: 16px;
     padding: 20px 0;
     border-bottom: 1px solid #eee;
+    justify-content: space-between;
   }
 
   div.list_item p {
@@ -71,6 +74,10 @@ export const List = styled.div`
 
   button.delete {
     color: #de3b3b;
+  }
+
+  button.default {
+    color: #4d85ee;
   }
 
   table {

@@ -4,13 +4,16 @@ export const Container = styled.div`
   background: #fff;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border: 1px solid #c9c9c9;
   strong {
     color: #444;
+    display: block;
   }
-  p {
+  button {
     color: #ee4d64;
+    border: 0;
+    background: none;
   }
 `;
 export const Logo = styled.div`
@@ -36,11 +39,15 @@ export const Menu = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    li {
+    button {
       display: inline-block;
       font-weight: bold;
-      color: #444;
+      color: #c9c9c9;
       padding: 0 10px;
+      transition: 300ms;
+      &:hover {
+        color: #666;
+      }
     }
   }
 `;

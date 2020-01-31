@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { toast } from 'react-toastify';
 import { Container, Cabecalho, List } from '../../css/container';
 
 import api from '../../services/api';
@@ -13,7 +13,7 @@ export default function Dashboard() {
         const response = await api.get('/students');
         setUsers(response.data);
       } catch (err) {
-        alert(err.message); // eslint-disable-line
+        toast.error(err.message);
       }
     }
     loadUsers();
