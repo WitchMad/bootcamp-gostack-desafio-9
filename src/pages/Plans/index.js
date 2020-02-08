@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { Container, Cabecalho, List } from '../../css/container';
 import { FormatPrice } from '../../util/format';
+import history from '../../services/history';
 
 export default function Plans() {
   const [plans, setPlans] = useState([]);
@@ -31,7 +32,13 @@ export default function Plans() {
       <Cabecalho>
         <h2>Gerenciando planos</h2>
         <div>
-          <button type="button">+ CADASTRAR</button>
+          <button
+            type="button"
+            className="btn-red"
+            onClick={() => history.push('/plans/new')}
+          >
+            + CADASTRAR
+          </button>
         </div>
       </Cabecalho>
       <List>
@@ -41,8 +48,12 @@ export default function Plans() {
           <h2>VALOR p/ MÊS</h2>
         </div>
         {plans.length !== 0 &&
-          plans.map(plan => (
-            <div className="list_item" key={plan.id}>
+          plans.map((plan, index) => (
+            <div
+              className="list_item"
+              key={plan.id}
+              style={{ animationDelay: `${index}00ms` }}
+            >
               <p>{plan.title}</p>
               <p>
                 {plan.duration} {plan.duration > 1 ? 'Meses' : 'Mês'}

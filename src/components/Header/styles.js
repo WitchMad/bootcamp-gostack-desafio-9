@@ -42,7 +42,7 @@ export const Menu = styled.div`
     button {
       display: inline-block;
       font-weight: bold;
-      color: #c9c9c9;
+      color: #999;
       padding: 0 10px;
       transition: 300ms;
       &:hover {

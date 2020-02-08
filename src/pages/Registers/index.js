@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { MdCheckCircle } from 'react-icons/md';
 import { Container, Cabecalho, List } from '../../css/container';
 import api from '../../services/api';
 import { FormatDate } from '../../util/format';
@@ -33,7 +34,9 @@ export default function Registers() {
       <Cabecalho>
         <h2>Gerenciando matrículas</h2>
         <div>
-          <button type="button">+ CADASTRAR</button>
+          <button type="button" className="btn-red">
+            + CADASTRAR
+          </button>
         </div>
       </Cabecalho>
       <List>
@@ -45,13 +48,22 @@ export default function Registers() {
           <h2>ATIVA</h2>
         </div>
         {registers.length !== 0 &&
-          registers.map(register => (
-            <div className="list_item" key={register.id}>
+          registers.map((register, index) => (
+            <div
+              className="list_item"
+              key={register.id}
+              style={{ animationDelay: `${index}00ms` }}
+            >
               <p>{register.student.name}</p>
               <p>{register.plan.title}</p>
               <p>{register.start_date_formated}</p>
               <p>{register.end_date_formated}</p>
-              <p>{register.active ? 'Ativo' : 'Inativo'}</p>
+              <p>
+                <MdCheckCircle
+                  color={register.active ? '#42cb59' : '#ddd'}
+                  size={22}
+                />
+              </p>
               <button type="button" className="edit">
                 editar
               </button>

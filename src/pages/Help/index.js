@@ -29,8 +29,12 @@ export default function Help() {
           <h2>ALUNO</h2>
         </div>
         {helps.length !== 0 &&
-          helps.map(help => (
-            <div className="list_item" key={help.id}>
+          helps.map((help, index) => (
+            <div
+              className="list_item"
+              key={help.id}
+              style={{ animationDelay: `${index}00ms` }}
+            >
               <p>{help.student.name}</p>
               <button type="button" className="default">
                 responder

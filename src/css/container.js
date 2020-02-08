@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const itemFade = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  } 100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -21,10 +31,16 @@ export const Cabecalho = styled.div`
     padding: 10px 15px;
     margin-right: 10px;
     border: 0;
-    color: #fff;
-    background: #ee4d64;
     border-radius: 4px;
     font-weight: bold;
+  }
+  button.btn-red {
+    color: #fff;
+    background: #ee4d64;
+  }
+  button.btn-grey {
+    color: #fff;
+    background: #c9c9c9;
   }
   input {
     padding: 10px 15px;
@@ -38,6 +54,39 @@ export const List = styled.div`
   background: #fff;
   padding: 30px;
   border-radius: 4px;
+
+  label {
+    color: #444;
+    font-weight: bold;
+    width: 100%;
+    margin: 0 5px;
+    input {
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      width: 100%;
+      border: 1px solid #c9c9c9;
+      color: #999;
+      font-size: 14px;
+      border-radius: 4px;
+      padding: 10px;
+    }
+    span {
+      width: 100%;
+      padding: 5px;
+      text-align: center;
+      background: #c9c9c9;
+      color: #fff;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  div.wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   div.container {
     color: #444;
@@ -56,6 +105,9 @@ export const List = styled.div`
     padding: 20px 0;
     border-bottom: 1px solid #eee;
     justify-content: space-between;
+    align-items: center;
+    animation: ${itemFade} 300ms linear;
+    animation-fill-mode: backwards;
   }
 
   div.list_item p {

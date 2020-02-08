@@ -42,10 +42,19 @@ export const Content = styled.div`
     font-weight: bold;
     color: #444;
     font-size: 14px;
+    span {
+      background: #ee4d64;
+      color: #fff;
+      text-align: center;
+      padding: 5px;
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
+    }
   }
   input {
     padding: 10px;
-    margin: 10px 0;
+    margin-top: 10px;
     border: 1px solid #eee;
     width: 100%;
   }
@@ -57,5 +66,9 @@ export const Content = styled.div`
     border-radius: 4px;
     color: #fff;
     font-weight: bold;
+    opacity: 1;
+  }
+  button:disabled {
+    opacity: 0.4;
   }
 `;
