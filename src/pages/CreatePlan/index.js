@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MdKeyboardArrowLeft, MdDone } from 'react-icons/md';
 import { Form, Input } from '@rocketseat/unform';
 import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 import { Container, Cabecalho, List } from '../../css/container';
 import normalizeCurrency from '../../util/normalizeCurrency';
 import { FormatPrice } from '../../util/format';
@@ -24,7 +25,7 @@ export default function CreatePlan() {
 
   async function handleSubmit({ title }) {
     try {
-      const response = await api.post('/plans', {
+      await api.post('/plans', {
         title,
         duration: months,
         price: parseFloat(priceFormated.replace('.', '').replace(',', '.')),
@@ -35,9 +36,17 @@ export default function CreatePlan() {
     }
   }
 
+  const schema = Yup.object().shape({
+    title: Yup.string().required('Título é um campo obrigatório'),
+    duration: Yup.number('Duração deve ser número').required(
+      'Duração é um campo obrigatório'
+    ),
+    price: Yup.string().required('Preço é um campo obrigatório'),
+  });
+
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} schema={schema}>
         <Cabecalho>
           <h2>Cadastro de plano</h2>
           <div>

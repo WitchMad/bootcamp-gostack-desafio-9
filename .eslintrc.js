@@ -1,8 +1,6 @@
 module.exports = {
   env: {
     es6: true,
-    jest: true,
-    browser: true
   },
   extends: ["airbnb", "prettier", "prettier/react"],
   globals: {
@@ -12,7 +10,7 @@ module.exports = {
   },
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018,
     sourceType: "module"

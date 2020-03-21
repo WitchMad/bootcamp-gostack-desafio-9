@@ -71,6 +71,18 @@ export const List = styled.div`
       border-radius: 4px;
       padding: 10px;
     }
+    select {
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      width: 100%;
+      border: 1px solid #c9c9c9;
+      color: #999;
+      background: #fff;
+      font-size: 14px;
+      border-radius: 4px;
+      padding: 10px;
+    }
     span {
       width: 100%;
       padding: 5px;
@@ -115,8 +127,8 @@ export const List = styled.div`
   }
 
   div.list_item button {
-    flex: 0.3;
     background: none;
+    margin: 0 10px;
     border: 0;
   }
 

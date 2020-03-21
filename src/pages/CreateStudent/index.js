@@ -22,7 +22,7 @@ export default function CreateStudent() {
     ),
   });
 
-  async function handleSubmit({ name, email, age, weight, height, resetForm }) {
+  async function handleSubmit({ name, email, age, weight, height }) {
     try {
       await api.post('/students', {
         name,
@@ -32,7 +32,6 @@ export default function CreateStudent() {
         height,
       });
       toast.success('Aluno cadastrado com sucesso');
-      resetForm();
     } catch (err) {
       toast.error(err.message);
     }

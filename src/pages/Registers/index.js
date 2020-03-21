@@ -4,6 +4,7 @@ import { MdCheckCircle } from 'react-icons/md';
 import { Container, Cabecalho, List } from '../../css/container';
 import api from '../../services/api';
 import { FormatDate } from '../../util/format';
+import history from '../../services/history';
 
 export default function Registers() {
   const [registers, setRegisters] = useState([]);
@@ -34,7 +35,11 @@ export default function Registers() {
       <Cabecalho>
         <h2>Gerenciando matrículas</h2>
         <div>
-          <button type="button" className="btn-red">
+          <button
+            type="button"
+            className="btn-red"
+            onClick={() => history.push('/registers/new')}
+          >
             + CADASTRAR
           </button>
         </div>
