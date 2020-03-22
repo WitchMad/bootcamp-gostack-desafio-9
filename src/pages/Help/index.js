@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import api from '../../services/api';
 
+import Modal from './components/Modal';
+
 import { Container, Cabecalho, List } from '../../css/container';
 
 export default function Help() {
   const [helps, setHelps] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     async function loadHelps() {
@@ -21,6 +24,7 @@ export default function Help() {
 
   return (
     <Container>
+      <Modal open={open} onClose={() => setOpen(false)} />
       <Cabecalho>
         <h2>Pedidos de auxílio</h2>
       </Cabecalho>
@@ -36,7 +40,7 @@ export default function Help() {
               style={{ animationDelay: `${index}00ms` }}
             >
               <p>{help.student.name}</p>
-              <button type="button" className="default">
+              <button type="button" className="default" onClick={() => setOpen(true)}>
                 responder
               </button>
             </div>

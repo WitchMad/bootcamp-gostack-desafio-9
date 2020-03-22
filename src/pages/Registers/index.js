@@ -30,6 +30,16 @@ export default function Registers() {
     loadRegisters();
   }, []);
 
+  async function deleteRegister(id) {
+    try {
+      await api.delete(`register/${id}`);
+      setRegisters(registers.filter(register => register.id !== id));
+      toast.success('Matrícula deletada');
+    } catch(err) {
+      toast.error(err.message);
+    }
+  }
+
   return (
     <Container style={{ maxWidth: '100%' }}>
       <Cabecalho>
@@ -72,7 +82,7 @@ export default function Registers() {
               <button type="button" className="edit">
                 editar
               </button>
-              <button type="button" className="delete">
+              <button type="button" className="delete" onClick={() => deleteRegister(register.id)}>
                 apagar
               </button>
             </div>

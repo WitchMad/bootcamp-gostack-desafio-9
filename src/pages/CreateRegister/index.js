@@ -35,6 +35,10 @@ export default function CreateRegister() {
       const { duration, price } = plans.find(item => item.id === Number(value));
       const price_final = duration * price;
       setValues({ ...values, [name]: Number(value), price_final: FormatPrice(price_final) });
+      if(values.date_start !== undefined) {
+        const date_end = addMonths(new Date(values.date_start), duration);
+        setValues({ ...values, [name]: value, date_end: format(date_end, "yyyy'-'MM'-'dd") })
+      }
     }else if(name === "date_start") {
       if(values.plan !== undefined) {
         const { duration } = plans.find(item => item.id === values.plan);

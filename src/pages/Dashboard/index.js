@@ -30,6 +30,17 @@ export default function Dashboard() {
     loadUsers();
   }, []);
 
+  async function deleteStudent(id) {
+    try {
+      await api.delete(`students/${id}`);
+      setUsers(users.filter(user => user.id !== id));
+      toast.success('Aluno deletado');
+    }catch(err) {
+      toast.error(err.message);
+    }
+    
+  }
+
   return (
     <Container>
       <Cabecalho>
@@ -64,7 +75,7 @@ export default function Dashboard() {
                 <button type="button" className="edit">
                   editar
                 </button>
-                <button type="button" className="delete">
+                <button type="button" className="delete" onClick={() => deleteStudent(user.id)}>
                   apagar
                 </button>
               </div>
@@ -81,7 +92,7 @@ export default function Dashboard() {
                 <button type="button" className="edit">
                   editar
                 </button>
-                <button type="button" className="delete">
+                <button type="button" className="delete" onClick={() => deleteStudent(user.id)}>
                   apagar
                 </button>
               </div>

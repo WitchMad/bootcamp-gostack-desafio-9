@@ -27,6 +27,16 @@ export default function Plans() {
     loadPlans();
   }, []);
 
+  async function deletePlan(id) {
+    try {
+      await api.delete(`plans/${id}`);
+      setPlans(plans.filter(plan => plan.id !== id));
+      toast.success('Plano deletado');
+    } catch(err) {
+      toast.error(err.message);
+    }
+  }
+
   return (
     <Container>
       <Cabecalho>
@@ -62,7 +72,7 @@ export default function Plans() {
               <button type="button" className="edit">
                 editar
               </button>
-              <button type="button" className="delete">
+              <button type="button" className="delete" onClick={() => deletePlan(plan.id)}>
                 apagar
               </button>
             </div>
