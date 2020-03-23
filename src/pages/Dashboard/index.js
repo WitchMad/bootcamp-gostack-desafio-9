@@ -65,6 +65,7 @@ export default function Dashboard() {
           <h2>NOME</h2>
           <h2>E-MAIL</h2>
           <h2>IDADE</h2>
+          <div></div>
         </div>
         {users.length !== 0 && filter !== ''
           ? filtered.map(user => (
@@ -72,12 +73,14 @@ export default function Dashboard() {
                 <p>{user.name}</p>
                 <p>{user.email}</p>
                 <p>{user.age}</p>
+                <div>
                 <button type="button" className="edit">
                   editar
                 </button>
                 <button type="button" className="delete" onClick={() => deleteStudent(user.id)}>
                   apagar
                 </button>
+                </div>
               </div>
             ))
           : users.map((user, index) => (
@@ -89,12 +92,14 @@ export default function Dashboard() {
                 <p>{user.name}</p>
                 <p>{user.email}</p>
                 <p>{user.age}</p>
-                <button type="button" className="edit">
+                <div>
+                <button type="button" className="edit" onClick={() => history.push(`/student/edit/${user.id}`)}>
                   editar
                 </button>
                 <button type="button" className="delete" onClick={() => deleteStudent(user.id)}>
                   apagar
                 </button>
+                </div>
               </div>
             ))}
       </List>

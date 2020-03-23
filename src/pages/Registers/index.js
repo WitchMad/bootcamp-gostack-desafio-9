@@ -61,6 +61,7 @@ export default function Registers() {
           <h2>INÍCIO</h2>
           <h2>TÉRMINO</h2>
           <h2>ATIVA</h2>
+          <div></div>
         </div>
         {registers.length !== 0 &&
           registers.map((register, index) => (
@@ -79,12 +80,14 @@ export default function Registers() {
                   size={22}
                 />
               </p>
-              <button type="button" className="edit">
+              <div>
+              <button type="button" className="edit" onClick={() => history.push(`/registers/edit/${register.id}`)}>
                 editar
               </button>
               <button type="button" className="delete" onClick={() => deleteRegister(register.id)}>
                 apagar
               </button>
+              </div>
             </div>
           ))}
       </List>

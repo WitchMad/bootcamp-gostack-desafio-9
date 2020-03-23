@@ -56,6 +56,7 @@ export default function Plans() {
           <h2>TÍTULO</h2>
           <h2>DURAÇÃO</h2>
           <h2>VALOR p/ MÊS</h2>
+          <div></div>
         </div>
         {plans.length !== 0 &&
           plans.map((plan, index) => (
@@ -69,12 +70,14 @@ export default function Plans() {
                 {plan.duration} {plan.duration > 1 ? 'Meses' : 'Mês'}
               </p>
               <p>{plan.priceFormated}</p>
-              <button type="button" className="edit">
+              <div>
+              <button type="button" className="edit" onClick={() => history.push(`/plans/edit/${plan.id}`)}>
                 editar
               </button>
               <button type="button" className="delete" onClick={() => deletePlan(plan.id)}>
                 apagar
               </button>
+              </div>
             </div>
           ))}
       </List>

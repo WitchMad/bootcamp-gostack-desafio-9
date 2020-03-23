@@ -10,10 +10,19 @@ const itemFade = keyframes`
   }
 `;
 
+const containerFade = keyframes`
+  0%{
+    opacity:0;
+  }100%{
+    opacity:1;
+  }
+`;
+
 export const Container = styled.div`
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  animation:${containerFade} 800ms linear;
 `;
 
 export const Cabecalho = styled.div`
@@ -106,8 +115,12 @@ export const List = styled.div`
   }
 
   div.container h2 {
-    flex: 0.275;
+    flex: 1;
     font-size: 16px;
+    text-align:left;
+  }
+  div.container div {
+    flex: 1;
   }
 
   div.list_item {
@@ -117,19 +130,26 @@ export const List = styled.div`
     padding: 20px 0;
     border-bottom: 1px solid #eee;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     animation: ${itemFade} 300ms linear;
     animation-fill-mode: backwards;
   }
 
   div.list_item p {
     flex: 1;
+    text-align:left;
   }
 
-  div.list_item button {
+  div.list_item div button {
+    text-align:right;
     background: none;
-    margin: 0 10px;
     border: 0;
+  }
+
+  div.list_item div {
+    display:flex;
+    justify-content:space-around;
+    flex:1;
   }
 
   button.edit {

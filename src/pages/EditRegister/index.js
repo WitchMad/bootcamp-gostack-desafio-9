@@ -9,13 +9,17 @@ import * as Yup from 'yup';
 import { toast } from "react-toastify";
 import history from '../../services/history';
 
-export default function CreateRegister() {
+export default function EditRegister({ match }) {
   const [plans, setPlans] = useState([]);
   const [options, setOptions] = useState({ students: [], plans: [] });
   const [values, setValues] = useState({});
+  const [initalData, setInitialData] = useState({
+    student: null,
+    plan: null,
+    date_start: null
+  });
 
   const schema = Yup.object().shape({
-    student: Yup.number().required(),
     plan: Yup.number().required(),
     date_start: Yup.string().required(),
   })
@@ -32,23 +36,37 @@ export default function CreateRegister() {
           return { id: item.id, title: item.title, value: item.id, };
         }),
       });
+      const listRegister = await api.get('/register');
+      const register = listRegister.data.find(item => item.id === Number(match.params.id));
+      setInitialData({
+        student: register.student_id,
+        plan: register.plan_id,
+        date_start: format(parseISO(register.start_date), "yyyy'-'MM'-'dd")
+      });
+      setValues({ 
+        name: register.student.name,
+        student: Number(register.student_id),
+        plan: Number(register.plan_id),
+        date_start: format(parseISO(register.start_date), "yyyy'-'MM'-'dd"),
+        date_end: format(parseISO(register.end_date), "yyyy'-'MM'-'dd"),
+        price_final: FormatPrice(register.price)
+      });
     }
     loadStates();
-  }, []);
+  }, [match.params.id]);
 
   function handleValues(e) {
     const { value, name } = e.target;
     if(name === "plan") {
       const { duration, price } = plans.find(item => item.id === Number(value));
-      const price_final = duration * price;
-      setValues({ ...values, [name]: Number(value), price_final: FormatPrice(price_final) });
+      setValues({ ...values, plan: Number(value), price_final: FormatPrice(duration * price) });
       if(values.date_start !== undefined) {
         const date_end = addMonths(new Date(values.date_start), duration);
         setValues({ ...values, [name]: value, date_end: format(date_end, "yyyy'-'MM'-'dd") })
       }
     }else if(name === "date_start") {
       if(values.plan !== undefined) {
-        const { duration } = plans.find(item => item.id === values.plan);
+        const { duration } = plans.find(item => item.id === Number(values.plan));
         const date_iso = parseISO(value);
         const date_end = addMonths(date_iso, duration);
         setValues({ ...values, [name]: value, date_end: format(date_end, "yyyy'-'MM'-'dd") })
@@ -58,12 +76,11 @@ export default function CreateRegister() {
 
   async function handleSubmit({ student, plan, date_start }) {
     try {
-      await api.post('register', {
-        student_id: Number(student),
+      await api.put(`register/${match.params.id}`, {
         plan_id: plan,
         start_date: date_start
       });
-      toast.success('Matrícula cadastrada com sucesso!');
+      toast.success('Matrícula atualizada com sucesso!');
     } catch(err) {
       toast.error(err.message);
     }
@@ -71,9 +88,9 @@ export default function CreateRegister() {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit} schema={schema}>
+      <Form onSubmit={handleSubmit} schema={schema} initialData={initalData}>
         <Cabecalho>
-          <h2>Cadastro de matrícula</h2>
+          <h2>Edição de matrícula</h2>
           <div>
             <button
               type="button"
@@ -90,7 +107,7 @@ export default function CreateRegister() {
         <List>
           <label htmlFor="student">
             ALUNO
-            <Select name="student" id="student" options={options.students} />
+            <Input name="student" value={values.name || ""} readOnly/>
           </label>
           <div className="wrap">
             <label htmlFor="plan">
